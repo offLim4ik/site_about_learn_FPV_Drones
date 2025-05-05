@@ -1,0 +1,296 @@
+:root {
+    --bg-dark: #0d0d0d;
+    --bg-darker: #080808;
+    --bg-card: #1a1a1a;
+    --text-main: #e6e6e6;
+    --text-light: #ffffff;
+    --text-muted: #a6a6a6;
+    --accent-color: #ff6b35;
+    --accent-hover: #ff5a1a;
+    --border-color: #2a2a2a;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    line-height: 1.6;
+}
+
+/* Навигация */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--bg-darker);
+    padding: 0 30px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.4);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    height: 80px;
+}
+
+.logo-container img {
+    height: 50px;
+    transition: transform 0.3s;
+}
+
+.logo-container img:hover {
+    transform: scale(1.05);
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    color: var(--text-main);
+    text-decoration: none;
+    padding: 10px 0;
+    font-size: 1.1em;
+    transition: all 0.3s;
+    position: relative;
+    font-weight: 500;
+}
+
+.nav-links a.active,
+.nav-links a:hover {
+    color: var(--accent-color);
+}
+
+.nav-links a.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: var(--accent-color);
+}
+
+/* Кнопки авторизации */
+.auth-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.button {
+    display: inline-block;
+    padding: 12px 28px;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    font-size: 0.95em;
+    letter-spacing: 0.5px;
+}
+
+.register-btn {
+    background-color: var(--accent-color);
+    color: #0d0d0d;
+    border: 2px solid var(--accent-color);
+    box-shadow: 0 4px 6px rgba(255, 107, 53, 0.25);
+}
+
+.login-btn {
+    background-color: transparent;
+    color: var(--text-main);
+    border: 2px solid var(--text-muted);
+}
+
+.register-btn:hover {
+    background-color: var(--accent-hover);
+    border-color: var(--accent-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(255, 90, 26, 0.35);
+}
+
+.login-btn:hover {
+    border-color: var(--text-light);
+    color: var(--text-light);
+    transform: translateY(-2px);
+}
+
+/* Основное содержимое */
+.main-content {
+    flex: 1;
+    padding: 40px 0;
+}
+
+.courses-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.course-card {
+    background-color: var(--bg-card);
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+}
+
+.course-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.35);
+    border-color: var(--accent-color);
+}
+
+.course-image {
+    height: 200px;
+    overflow: hidden;
+}
+
+.course-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.course-card:hover .course-image img {
+    transform: scale(1.1);
+}
+
+.course-info {
+    padding: 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.course-info h3 {
+    margin: 0 0 15px;
+    color: var(--text-light);
+    font-size: 1.3em;
+    font-weight: 600;
+}
+
+.course-info p {
+    color: var(--text-muted);
+    margin: 0;
+    font-size: 0.95em;
+    line-height: 1.5;
+}
+
+/* Подвал */
+.footer {
+    background-color: var(--bg-darker);
+    color: var(--text-main);
+    padding: 50px 0 20px;
+    border-top: 1px solid var(--border-color);
+    margin-top: auto;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-section {
+    margin-bottom: 20px;
+}
+
+.footer-section h3 {
+    color: var(--text-light);
+    margin-bottom: 20px;
+    font-size: 1.2em;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.footer-section h3::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 50px;
+    height: 2px;
+    background-color: var(--accent-color);
+}
+
+.footer-section p {
+    margin: 10px 0;
+    color: var(--text-muted);
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.social-icons a {
+    color: var(--text-muted);
+    font-size: 1.4em;
+    transition: all 0.3s;
+}
+
+.social-icons a:hover {
+    color: var(--accent-color);
+    transform: translateY(-3px);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 30px;
+    margin-top: 30px;
+    border-top: 1px solid var(--border-color);
+    color: var(--text-muted);
+    font-size: 0.9em;
+}
+
+/* Адаптивность */
+@media (max-width: 1024px) {
+    .courses-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        height: auto;
+        padding: 15px;
+    }
+    
+    .nav-links {
+        flex-direction: column;
+        width: 100%;
+        margin: 15px 0;
+        gap: 10px;
+    }
+    
+    .auth-buttons {
+        width: 100%;
+        justify-content: center;
+        margin-bottom: 15px;
+    }
+    
+    .courses-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{{ url_for('static', filename='dron_logo.ico') }}" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+    <title>Добро пожаловать на сайт FPV-дронов</title>
+    <!-- Font Awesome для иконок -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <main class="home-container">
+        <div class="home-content">
+            <h1>Добро пожаловать в мир FPV-дронов!</h1>
+            <p class="home-description">Откройте для себя новые горизонты с нашими высокотехнологичными FPV-дронами. Погрузитесь в захватывающий мир полетов и исследуйте небо с невероятной скоростью и маневренностью.</p>
+            
+            <div class="home-buttons">
+                <a href="/main" class="home-button">Наши курсы</a>
+                <a href="/about" class="home-button">О нас</a>
+            </div>
+            
+            <div class="home-image">
+                <img src="{{ url_for('static', filename='drone_hero.jpg') }}" alt="FPV дрон в полете">
+            </div>
+        </div>
+        
+        <footer class="home-footer">
+            <div class="footer-sections">
+                <div class="footer-section">
+                    <h3>О компании</h3>
+                    <p>Dronus Inc – лидер в обучении пилотированию FPV-дронов с 2020 года.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Контакты</h3>
+                    <p><i class="icon">✉️</i> ketov.gral03@yandex.ru</p>
+                    <p><i class="icon">📱</i> +7 (XXX) XXX-XX-XX</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Социальные сети</h3>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-vk"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 Dronus Inc. Все права защищены.</p>
+            </div>
+        </footer>
+    </main>
+</body>
+</html>
