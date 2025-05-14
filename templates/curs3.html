@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{{ url_for('static', filename='dron_logo.ico') }}" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Сборка дронов | Dronus Inc</title>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo-container">
+            <img src="{{ url_for('static', filename='dron_logo.ico') }}" alt="Логотип компании" onclick="window.location.href='/'">
+        </div>
+        <div class="nav-links">
+            <a href="/">Главная</a>
+            <a href="/main">Курсы</a>
+            <a href="/about">О нас</a>
+            <a href="/contacts">Контакты</a>
+        </div>
+        <div class="auth-buttons">
+            {% if 'user_id' in session %}
+                <div class="user-indicator">
+                    <div class="user-avatar" title="Ваш аккаунт">{{ session['username'][0]|upper }}</div>
+                    <span class="user-name">{{ session['username'] }}</span>
+                    <button class="logout-btn" onclick="window.location.href='{{ url_for('logout') }}'">
+                        <i class="fas fa-sign-out-alt"></i> Выйти
+                    </button>
+                </div>
+            {% else %}
+                <a href="/register" class="button register-btn">
+                    <i class="fas fa-user-plus"></i> Регистрация
+                </a>
+                <a href="/login" class="button login-btn">
+                    <i class="fas fa-sign-in-alt"></i> Вход
+                </a>
+            {% endif %}
+        </div>
+    </nav>
+
+    <section class="course-hero">
+        <h1>Курс 3: Сборка и настройка FPV-дронов</h1>
+        <p>От компонентов до готового к полетам дрона</p>
+    </section>
+
+    <div class="course-container">
+        <div class="course-details">
+            <div class="course-description">
+                <h2><i class="fas fa-info-circle"></i> Описание курса</h2>
+                <p>Этот практический курс научит вас собирать FPV-дрон с нуля и профессионально его настраивать. За 5 занятий вы пройдете весь путь от выбора компонентов до первого тестового полета собранного вами дрона.</p>
+                
+                <p>Вы узнаете, как правильно подбирать компоненты под ваши задачи (гонки, фристайл, аэросъемка), освоите основные паяльные работы, научитесь правильно располагать компоненты на раме для оптимального распределения веса и защиты при авариях.</p>
+                
+                <p>Особое внимание уделяется настройке полетного контроллера (Betaflight/INAV), калибровке ESC, настройке PID-регуляторов и фильтров. Вы научитесь диагностировать проблемы и оптимизировать настройки под свой стиль пилотирования.</p>
+                
+                <p>Курс завершается сборкой собственного дрона, который вы заберете с собой, и его тестовым полетом под контролем инструктора.</p>
+            </div>
+            
+            <div class="course-sidebar">
+                <div class="course-info-card">
+                    <h3><i class="fas fa-info-circle"></i> Информация</h3>
+                    <p><strong>Длительность:</strong> 5 занятий по 3 часа</p>
+                    <p><strong>Стоимость:</strong> 18 000 руб. (включая комплектующие)</p>
+                    <p><strong>Уровень:</strong> Начинающий/Средний</p>
+                    <p><strong>Что с собой:</strong> Паяльник (если есть)</p>
+                </div>
+                
+                <div class="course-info-card">
+                    <h3><i class="fas fa-tools"></i> Что вы получите</h3>
+                    <p>• Собранный FPV-дрон</p>
+                    <p>• Навыки сборки и настройки</p>
+                    <p>• Доступ к закрытому чату</p>
+                    <p>• Сертификат об окончании</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="course-program">
+            <h2><i class="fas fa-list-ol"></i> Программа курса</h2>
+            
+            <div class="program-item">
+                <h3><i class="fas fa-shopping-cart"></i> Занятие 1: Выбор компонентов</h3>
+                <p>Разбор всех компонентов дрона. Как выбрать раму, полетный контроллер, ESC, двигатели, камеру, VTX, антенны. Подбор под бюджет и задачи.</p>
+            </div>
+            
+            <div class="program-item">
+                <h3><i class="fas fa-robot"></i> Занятие 2: Сборка рамы и установка компонентов</h3>
+                <p>Правильная сборка рамы. Оптимальное расположение компонентов. Основы пайки. Установка полетного контроллера, ESC, двигателей.</p>
+            </div>
+            
+            <div class="program-item">
+                <h3><i class="fas fa-plug"></i> Занятие 3: Электрика и подключение</h3>
+                <p>Подключение питания. Установка и настройка камеры, VTX, приемника. Разводка проводов. Защита от помех.</p>
+            </div>
+            
+            <div class="program-item">
+                <h3><i class="fas fa-sliders-h"></i> Занятие 4: Настройка ПО</h3>
+                <p>Установка и настройка Betaflight/INAV. Калибровка ESC. Настройка PID и фильтров. Настройка OSD.</p>
+            </div>
+            
+            <div class="program-item">
+                <h3><i class="fas fa-check-circle"></i> Занятие 5: Тестирование и доводка</h3>
+                <p>Тестовый полет. Диагностика проблем. Финальная доводка. Советы по обслуживанию.</p>
+            </div>
+        </div>
+        
+        <div class="cta-section">
+            <h2>Хотите собрать свой идеальный дрон?</h2>
+            <p>Запишитесь на курс и получите все необходимые навыки!</p>
+            <a href="/register" class="cta-button">Записаться на курс</a>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>О компании</h3>
+                <p>Dronus Inc – лидер в обучении пилотированию FPV-дронов с 2020 года.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Контакты</h3>
+                <p><i class="fas fa-envelope"></i> ketov.gral03@yandex.ru</p>
+                <p><i class="fas fa-phone"></i> +7 (XXX) XXX-XX-XX</p>
+            </div>
+            <div class="footer-section">
+                <h3>Социальные сети</h3>
+                <div class="social-icons">
+                    <a href="/vk"><i class="fab fa-vk"></i></a>
+                    <a href="/tg"><i class="fab fa-telegram"></i></a>
+                    <a href="/yt"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Dronus Inc. Все права защищены.</p>
+        </div>
+    </footer>
+</body>
+</html>

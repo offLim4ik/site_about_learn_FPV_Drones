@@ -1,121 +1,71 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="{{ url_for('static', filename='dron_logo.ico') }}" type="image/x-icon">
-    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
-    <title>Курсы FPV-дронов</title>
-</head>
-<body>
-    <nav class="navbar">
-        <div class="logo-container">
-            <img src="{{ url_for('static', filename='dron_logo.ico') }}" alt="Логотип компании">
-        </div>
-        <div class="nav-links">
-            <a href="/">Главная</a>
-            <a href="/main" class="active">Курсы</a>
-            <a href="/about">О нас</a>
-            <a href="/contacts">Контакты</a>
-        </div>
-        <div class="auth-buttons">
-            <a href="/register" class="button register-btn">Регистрация</a>
-            <a href="/login" class="button login-btn">Вход</a>
-        </div>
-    </nav>
+{% extends "base.html" %}
 
-    <main class="main-content">
-        <div class="courses-grid">
-            <!-- Первая строка курсов -->
-            <div class="course-card" onclick="window.location.href='course1.html'">
-                <div class="course-image">
-                    <img src="course1.jpg" alt="Курс 1">
-                </div>
-                <div class="course-info">
-                    <h3>Курс 1: Основы FPV</h3>
-                    <p>Освойте базовые принципы управления FPV-дронами, технику безопасности и начальную настройку оборудования.</p>
-                </div>
-            </div>
-            
-            <div class="course-card" onclick="window.location.href='course2.html'">
-                <div class="course-image">
-                    <img src="course2.jpg" alt="Курс 2">
-                </div>
-                <div class="course-info">
-                    <h3>Курс 2: Продвинутые техники</h3>
-                    <p>Научитесь выполнять сложные маневры и акробатические трюки, летать в ограниченном пространстве.</p>
-                </div>
-            </div>
-            
-            <div class="course-card" onclick="window.location.href='course3.html'">
-                <div class="course-image">
-                    <img src="course3.jpg" alt="Курс 3">
-                </div>
-                <div class="course-info">
-                    <h3>Курс 3: Сборка и настройка</h3>
-                    <p>Полное руководство по сборке дрона с нуля: от выбора компонентов до тонкой настройки полетного контроллера.</p>
-                </div>
-            </div>
-            
-            <!-- Вторая строка курсов -->
-            <div class="course-card" onclick="window.location.href='course4.html'">
-                <div class="course-image">
-                    <img src="course4.jpg" alt="Курс 4">
-                </div>
-                <div class="course-info">
-                    <h3>Курс 4: Аэрофотосъемка</h3>
-                    <p>Профессиональные техники съемки с воздуха, работа с камерой, настройка экспозиции и стабилизация.</p>
-                </div>
-            </div>
-            
-            <div class="course-card" onclick="window.location.href='course5.html'">
-                <div class="course-image">
-                    <img src="course5.jpg" alt="Курс 5">
-                </div>
-                <div class="course-info">
-                    <h3>Курс 5: Гонки на дронах</h3>
-                    <p>Подготовка к соревнованиям: трассовое пилотирование, тактики прохождения ворот, настройка дрона для гонок.</p>
-                </div>
-            </div>
-            
-            <div class="course-card" onclick="window.location.href='course6.html'">
-                <div class="course-image">
-                    <img src="course6.jpg" alt="Курс 6">
-                </div>
-                <div class="course-info">
-                    <h3>Курс 6: Ремонт и обслуживание</h3>
-                    <p>Диагностика неисправностей, пайка компонентов, обслуживание двигателей и электроники.</p>
-                </div>
-            </div>
-        </div>
-    </main>
+{% block title %}Курсы FPV-дронов | Dronus Inc{% endblock %}
 
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>О компании</h3>
-                <p>Dronus Inc – лидер в обучении пилотированию FPV-дронов с 2020 года.</p>
+{% block content %}
+<div class="main-content">
+    <div class="courses-grid">
+        <!-- Первая строка курсов -->
+        <div class="course-card" onclick="window.location.href='/curs1'">
+            <div class="course-image">
+                <img src="{{ url_for('static', filename='curs1.ico') }}" alt="Курс 1">
             </div>
-            <div class="footer-section">
-                <h3>Контакты</h3>
-                <p><i class="icon">📧</i> ketov.gral03@yandex.ru</p>
-                <p><i class="icon">📱</i> +7 (XXX) XXX-XX-XX</p>
-            </div>
-            <div class="footer-section">
-                <h3>Социальные сети</h3>
-                <div class="social-icons">
-                    <a href="#"><i class="fab fa-vk"></i></a>
-                    <a href="#"><i class="fab fa-telegram"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
-                </div>
+            <div class="course-info">
+                <h3>Курс 1: Основы FPV</h3>
+                <p>Освойте базовые принципы управления FPV-дронами, технику безопасности и начальную настройку оборудования.</p>
             </div>
         </div>
-        <div class="footer-bottom">
-            <p>&copy; 2025 Dronus Inc. Все права защищены.</p>
-        </div>
-    </footer>
 
-    <!-- Font Awesome для иконок -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-</body>
-</html>
+        <div class="course-card" onclick="window.location.href='/curs2'">
+            <div class="course-image">
+                <img src="{{ url_for('static', filename='curs2.jpg') }}" alt="Курс 2">
+            </div>
+            <div class="course-info">
+                <h3>Курс 2: Продвинутые техники</h3>
+                <p>Научитесь выполнять сложные маневры и акробатические трюки, летать в ограниченном пространстве.</p>
+            </div>
+        </div>
+
+        <div class="course-card" onclick="window.location.href='/curs3'">
+            <div class="course-image">
+                <img src="{{ url_for('static', filename='curs3.png') }}" alt="Курс 3">
+            </div>
+            <div class="course-info">
+                <h3>Курс 3: Сборка и настройка</h3>
+                <p>Полное руководство по сборке дрона с нуля: от выбора компонентов до тонкой настройки полетного контроллера.</p>
+            </div>
+        </div>
+
+        <!-- Вторая строка курсов -->
+        <div class="course-card" onclick="window.location.href='/curs4'">
+            <div class="course-image">
+                <img src="{{ url_for('static', filename='curs4.jpg') }}" alt="Курс 4">
+            </div>
+            <div class="course-info">
+                <h3>Курс 4: Аэрофотосъемка</h3>
+                <p>Профессиональные техники съемки с воздуха, работа с камерой, настройка экспозиции и стабилизация.</p>
+            </div>
+        </div>
+
+        <div class="course-card" onclick="window.location.href='/curs5'">
+            <div class="course-image">
+                <img src="{{ url_for('static', filename='curs5.jpg') }}" alt="Курс 5">
+            </div>
+            <div class="course-info">
+                <h3>Курс 5: Гонки на дронах</h3>
+                <p>Подготовка к соревнованиям: трассовое пилотирование, тактики прохождения ворот, настройка дрона для гонок.</p>
+            </div>
+        </div>
+
+        <div class="course-card" onclick="window.location.href='/curs6'">
+            <div class="course-image">
+                <img src="{{ url_for('static', filename='curs6.jpg') }}" alt="Курс 6">
+            </div>
+            <div class="course-info">
+                <h3>Курс 6: Ремонт и обслуживание</h3>
+                <p>Диагностика неисправностей, пайка компонентов, обслуживание двигателей и электроники.</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

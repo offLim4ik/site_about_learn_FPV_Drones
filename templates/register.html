@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{{ url_for('static', filename='dron_logo.ico') }}" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Регистрация | FPV-дроны</title>
+</head>
+<body>
+    <div class="auth-page">
+        <nav class="navbar">
+            <div class="logo-container">
+                <img src="{{ url_for('static', filename='dron_logo.ico') }}" alt="Логотип" class="logo">
+            </div>
+            <div class="nav-links">
+                <a href="/">Главная</a>
+                <a href="/main">Курсы</a>
+                <a href="/about">О нас</a>
+                <a href="/contacts">Контакты</a>
+            </div>
+            <div class="auth-buttons">
+                {% if 'user_id' in session %}
+                    <div class="user-indicator">
+                        <div class="user-avatar">{{ session['username'][0]|upper }}</div>
+                        <span class="user-name">{{ session['username'] }}</span>
+                        <button class="logout-btn" onclick="window.location.href='{{ url_for('logout') }}'">
+                            <i class="fas fa-sign-out-alt"></i> Выйти
+                        </button>
+                    </div>
+                {% else %}
+                    <a href="/register" class="button register-btn active">Регистрация</a>
+                    <a href="/login" class="button login-btn">Вход</a>
+                {% endif %}
+            </div>
+        </nav>
+
+        <div class="auth-container">
+            <div class="auth-header">
+                <img src="{{ url_for('static', filename='dron_logo.ico') }}" alt="Логотип" class="auth-logo">
+                <h1>Создание аккаунта</h1>
+            </div>
+
+            <form class="auth-form" method="POST" action="{{ url_for('register') }}">
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        {% for category, message in messages %}
+                            <div class="alert alert-{{ category }}">{{ message }}</div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+
+                <div class="form-group">
+                    <label for="username">
+                        <i class="fas fa-user"></i> Имя пользователя
+                    </label>
+                    <input type="text" id="username" name="username" required placeholder="Придумайте логин">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">
+                        <i class="fas fa-envelope"></i> Email адрес
+                    </label>
+                    <input type="email" id="email" name="email" required placeholder="example@example.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="password">
+                        <i class="fas fa-lock"></i> Пароль
+                    </label>
+                    <input type="password" id="password" name="password" required placeholder="Не менее 6 символов">
+                </div>
+
+                <div class="form-group">
+                    <label for="confirm_password">
+                        <i class="fas fa-lock"></i> Подтверждение пароля
+                    </label>
+                    <input type="password" id="confirm_password" name="confirm_password" required placeholder="Повторите пароль">
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-user-plus"></i> Зарегистрироваться
+                </button>
+
+                <div class="auth-footer">
+                    <p>Уже есть аккаунт? <a href="{{ url_for('login') }}">Войдите</a></p>
+                </div>
+            </form>
+        </div>
+
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>О компании</h3>
+                    <p>Dronus Inc – лидер в обучении пилотированию FPV-дронов с 2020 года.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Контакты</h3>
+                    <p><i class="fas fa-envelope"></i> ketov.gral03@yandex.ru</p>
+                    <p><i class="fas fa-phone"></i> +7 (XXX) XXX-XX-XX</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Социальные сети</h3>
+                    <div class="social-icons">
+                        <a href="/vk"><i class="fab fa-vk"></i></a>
+                        <a href="/tg"><i class="fab fa-telegram"></i></a>
+                        <a href="/yt"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Dronus Inc. Все права защищены.</p>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

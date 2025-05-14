@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{{ url_for('static', filename='dron_logo.ico') }}" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Ремонт FPV-дронов | Dronus Inc</title>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo-container">
+            <img src="{{ url_for('static', filename='dron_logo.ico') }}" alt="Логотип компании" onclick="window.location.href='/'">
+        </div>
+        <div class="nav-links">
+            <a href="/">Главная</a>
+            <a href="/main">Курсы</a>
+            <a href="/about">О нас</a>
+            <a href="/contacts">Контакты</a>
+        </div>
+        <div class="auth-buttons">
+            {% if 'user_id' in session %}
+                <div class="user-indicator">
+                    <div class="user-avatar" title="Ваш аккаунт">{{ session['username'][0]|upper }}</div>
+                    <span class="user-name">{{ session['username'] }}</span>
+                    <button class="logout-btn" onclick="window.location.href='{{ url_for('logout') }}'">
+                        <i class="fas fa-sign-out-alt"></i> Выйти
+                    </button>
+                </div>
+            {% else %}
+                <a href="/register" class="button register-btn">
+                    <i class="fas fa-user-plus"></i> Регистрация
+                </a>
+                <a href="/login" class="button login-btn">
+                    <i class="fas fa-sign-in-alt"></i> Вход
+                </a>
+            {% endif %}
+        </div>
+    </nav>
+
+    <section class="course-hero" style="background-image: url('{{ url_for('static', filename='course6-bg.jpg') }}')">
+        <h1>Курс 6: Ремонт и обслуживание FPV-дронов</h1>
+        <p>Спасайте свои дроны и экономьте деньги</p>
+    </section>
+
+    <div class="course-container">
+        <div class="course-details">
+            <div class="course-description">
+                <h2><i class="fas fa-info-circle"></i> Описание курса</h2>
+                <p>Этот практический курс научит вас диагностировать и устранять неисправности FPV-дронов, выполнять паяльные работы любой сложности и проводить регулярное техническое обслуживание. За 6 занятий вы превратитесь из начинающего любителя в уверенного мастера по ремонту квадрокоптеров.</p>
+                
+                <p>Вы узнаете, как правильно диагностировать проблемы (от простых обрывов проводов до сложных неисправностей полетного контроллера), освоите профессиональные техники пайки мелких компонентов, научитесь заменять двигатели, ESC и другие электронные компоненты. Особое внимание уделяется профилактике поломок и продлению срока службы оборудования.</p>
+                
+                <p>Курс построен на реальных кейсах - вы будете работать с дронами, имеющими типичные повреждения после аварий. Каждый студент получит набор инструментов для ремонта и доступ к библиотеке схем и документации. По окончании курса вы сможете не только ремонтировать свои дроны, но и оказывать услуги по ремонту другим пилотам.</p>
+            </div>
+            
+            <div class="course-sidebar">
+                <div class="course-info-card">
+                    <h3><i class="fas fa-info-circle"></i> Информация</h3>
+                    <p><strong>Длительность:</strong> 6 занятий по 2.5 часа</p>
+                    <p><strong>Стоимость:</strong> 14 000 руб.</p>
+                    <p><strong>Уровень:</strong> Начинающий/Средний</p>
+                    <p><strong>Что с собой:</strong> Свой сломанный дрон (по желанию)</p>
+                </div>
+                
+                <div class="course-info-card">
+                    <h3><i class="fas fa-tools"></i> Что вы получите</h3>
+                    <p>• Навыки профессионального ремонта</p>
+                    <p>• Доступ к диагностическому ПО</p>
+                    <p>• Чек-листы по обслуживанию</p>
+                    <p>• Сертификат об окончании</p>
+                </div>
+                
+                <div class="course-info-card">
+                    <h3><i class="fas fa-calendar-alt"></i> Расписание</h3>
+                    <p><strong>Начало:</strong> Каждый вторник</p>
+                    <p><strong>Время:</strong> 18:30 - 21:00</p>
+                    <p><strong>Место:</strong> Наша мастерская</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="course-program">
+            <h2><i class="fas fa-list-ol"></i> Программа курса</h2>
+            
+            <div class="program-item">
+                <h3><i class="fas fa-search"></i> Занятие 1: Основы диагностики</h3>
+                <p>Методика поиска неисправностей. Использование мультиметра и других инструментов. Разбор типичных поломок после аварий. Практика на реальных примерах.</p>
+            </div>
+            
+            <div class="program-item">
+                <h3><i class="fas fa-bolt"></i> Занятие 2: Ремонт электроники</h3>
+                <p>Пайка проводов и разъемов. Замена конденсаторов и резисторов. Восстановление оборванных дорожек. Работа с SMD-компонентами. Техника безопасности.</p>
+            </div>
+            
+            <div class="program-item">
+                <h3><i class="fas fa-cog"></i> Занятие 3: Двигатели и ESC</h3>
+                <p>Диагностика и замена двигателей. Ремонт и перепрошивка ESC. Настройка параметров. Тестирование после ремонта.</p>
+            </div>
+            
+            <div class="program-item">
+                <h3><i class="fas fa-microchip"></i> Занятие 4: Полетные контроллеры</h3>
+                <p>Диагностика проблем FC. Перепрошивка и восстановление. Замена разъемов. Работа с Betaflight Configurator.</p>
+            </div>
+            
+            <div class="program-item">
+                <h3><i class="fas fa-wifi"></i> Занятие 5: Видеотрасс и радиоаппаратура</h3>
+                <p>Ремонт камер, VTX и антенн. Настройка частот и мощности. Устранение помех. Ремонт пультов управления и приемников.</p>
+            </div>
+            
+            <div class="program-item">
+                <h3><i class="fas fa-shield-alt"></i> Занятие 6: Профилактика и обслуживание</h3>
+                <p>Плановое ТО дрона. Замена изношенных деталей. Оптимизация конструкции для надежности. Финальный тест-драйв отремонтированных дронов.</p>
+            </div>
+        </div>
+        
+        <div class="cta-section">
+            <h2>Хотите перестать выбрасывать деньги на ремонт?</h2>
+            <p>Запишитесь на курс и научитесь чинить дроны самостоятельно!</p>
+            <a href="/register" class="cta-button">Записаться на курс</a>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>О компании</h3>
+                <p>Dronus Inc – лидер в обучении пилотированию FPV-дронов с 2020 года.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Контакты</h3>
+                <p><i class="fas fa-envelope"></i> ketov.gral03@yandex.ru</p>
+                <p><i class="fas fa-phone"></i> +7 (XXX) XXX-XX-XX</p>
+            </div>
+            <div class="footer-section">
+                <h3>Социальные сети</h3>
+                <div class="social-icons">
+                    <a href="/vk"><i class="fab fa-vk"></i></a>
+                    <a href="/tg"><i class="fab fa-telegram"></i></a>
+                    <a href="/yt"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Dronus Inc. Все права защищены.</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{{ url_for('static', filename='dron_logo.ico') }}" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Аэрофотосъемка | Dronus Inc</title>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo-container">
+            <img src="{{ url_for('static', filename='dron_logo.ico') }}" alt="Логотип компании" onclick="window.location.href='/'">
+        </div>
+        <div class="nav-links">
+            <a href="/">Главная</a>
+            <a href="/main">Курсы</a>
+            <a href="/about">О нас</a>
+            <a href="/contacts">Контакты</a>
+        </div>
+        <div class="auth-buttons">
+            {% if 'user_id' in session %}
+                <div class="user-indicator">
+                    <div class="user-avatar" title="Ваш аккаунт">{{ session['username'][0]|upper }}</div>
+                    <span class="user-name">{{ session['username'] }}</span>
+                    <button class="logout-btn" onclick="window.location.href='{{ url_for('logout') }}'">
+                        <i class="fas fa-sign-out-alt"></i> Выйти
+                    </button>
+                </div>
+            {% else %}
+                <a href="/register" class="button register-btn">
+                    <i class="fas fa-user-plus"></i> Регистрация
+                </a>
+                <a href="/login" class="button login-btn">
+                    <i class="fas fa-sign-in-alt"></i> Вход
+                </a>
+            {% endif %}
+        </div>
+    </nav>
+
+    <section class="course-hero">
+        <h1>Курс 4: Профессиональная аэрофотосъемка</h1>
+        <p>Создавайте потрясающие кадры с высоты</p>
+    </section>
+
+    <div class="course-container">
+        <div class="course-details">
+            <div class="course-description">
+                <h2><i class="fas fa-info-circle"></i> Описание курса</h2>
+                <p>Этот специализированный курс предназначен для фотографов, видеографов и операторов, которые хотят освоить профессиональную съемку с воздуха. За 6 занятий вы научитесь создавать впечатляющие аэрофото и видео, которые будут выделяться на фоне любительских кадров.</p>
+                
+                <p>Курс охватывает все аспекты аэросъемки: от выбора оборудования и настройки камеры до композиции кадра и постобработки. Вы узнаете, как правильно выставлять экспозицию, работать с балансом белого, использовать ND-фильтры и настраивать стабилизацию для получения плавного видео.</p>
+                
+                <p>Особое внимание уделяется безопасности и правовым аспектам аэросъемки. Вы узнаете, где можно и нельзя снимать, как получить разрешения на съемку в ограниченных зонах и как защитить свои права как оператора.</p>
+                
+                <p>Курс включает практические съемки в различных локациях (город, природа, архитектура) и разбор отснятого материала с профессиональным оператором.</p>
+            </div>
+            
+            <div class="course-sidebar">
+                <div class="course-info-card">
+                    <h3><i class="fas fa-info-circle"></i> Информация</h3>
+                    <p><strong>Длительность:</strong> 6 занятий по 2.5 часа</p>
+                    <p><strong>Стоимость:</strong> 16 000 руб.</p>
+                    <p><strong>Уровень:</strong> Начинающий/Средний</p>
+                    <p><strong>Оборудование:</strong> Можно свое или наше</p>
+                </div>
+                
+                <div class="course-info-card">
+                    <h3><i class="fas fa-camera"></i> Чему научитесь</h3>
+                    <p>• Настройкам камеры</p>
+                    <p>• Основам композиции</p>
+                    <p>• Плавному управлению</p>
+                    <p>• Базовому монтажу</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="course-program">
+            <h2><i class="fas fa-list-ol"></i> Программа курса</h2>
+            
+            <div class="program-item">
+                <h3><i class="fas fa-cogs"></i> Занятие 1: Оборудование для аэросъемки</h3>
+                <p>Обзор дронов для съемки. Выбор камеры, объективов, фильтров. Настройки камеры для фото и видео.</p>
+            </div>
+            
+            <div class="program-item">
+                <h3><i class="fas fa-sun"></i> Занятие 2: Основы экспозиции и света</h3>
+                <p>Выдержка, диафрагма, ISO в аэросъемке. Работа с ND-фильтрами. Баланс белого. Гистограмма.</p>
+            </div>
+            
+            <div class="program-item">
+                <h3><i class="fas fa-photo-video"></i> Занятие 3: Композиция кадра</h3>
+                <p>Правило третей, ведущие линии, симметрия. Выбор ракурсов. Съемка панорам и сферических фото.</p>
+            </div>
+            
+            <div class="program-item">
+                <h3><i class="fas fa-video"></i> Занятие 4: Видеосъемка с дрона</h3>
+                <p>Настройки для видео. Движения камеры (панорамы, пролеты). Плавность управления. Стабилизация.</p>
+            </div>
+            
+            <div class="program-item">
+                <h3><i class="fas fa-gavel"></i> Занятие 5: Правовые аспекты</h3>
+                <p>Законодательство о съемке с дронов. Разрешенные зоны. Как получить разрешение на съемку.</p>
+            </div>
+            
+            <div class="program-item">
+                <h3><i class="fas fa-film"></i> Занятие 6: Основы монтажа</h3>
+                <p>Базовый монтаж в DaVinci Resolve. Цветокоррекция аэровидео. Стабилизация. Экспорт.</p>
+            </div>
+        </div>
+        
+        <div class="cta-section">
+            <h2>Готовы создавать потрясающие аэроснимки?</h2>
+            <p>Запишитесь на курс и раскройте потенциал аэрофотосъемки!</p>
+            <a href="/register" class="cta-button">Записаться на курс</a>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>О компании</h3>
+                <p>Dronus Inc – лидер в обучении пилотированию FPV-дронов с 2020 года.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Контакты</h3>
+                <p><i class="fas fa-envelope"></i> ketov.gral03@yandex.ru</p>
+                <p><i class="fas fa-phone"></i> +7 (XXX) XXX-XX-XX</p>
+            </div>
+            <div class="footer-section">
+                <h3>Социальные сети</h3>
+                <div class="social-icons">
+                    <a href="/vk"><i class="fab fa-vk"></i></a>
+                    <a href="/tg"><i class="fab fa-telegram"></i></a>
+                    <a href="/yt"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Dronus Inc. Все права защищены.</p>
+        </div>
+    </footer>
+</body>
+</html>

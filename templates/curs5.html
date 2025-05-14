@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{{ url_for('static', filename='dron_logo.ico') }}" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>FPV-гонки | Dronus Inc</title>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo-container">
+            <img src="{{ url_for('static', filename='dron_logo.ico') }}" alt="Логотип компании" onclick="window.location.href='/'">
+        </div>
+        <div class="nav-links">
+            <a href="/">Главная</a>
+            <a href="/main">Курсы</a>
+            <a href="/about">О нас</a>
+            <a href="/contacts">Контакты</a>
+        </div>
+        <div class="auth-buttons">
+            {% if 'user_id' in session %}
+                <div class="user-indicator">
+                    <div class="user-avatar" title="Ваш аккаунт">{{ session['username'][0]|upper }}</div>
+                    <span class="user-name">{{ session['username'] }}</span>
+                    <button class="logout-btn" onclick="window.location.href='{{ url_for('logout') }}'">
+                        <i class="fas fa-sign-out-alt"></i> Выйти
+                    </button>
+                </div>
+            {% else %}
+                <a href="/register" class="button register-btn">
+                    <i class="fas fa-user-plus"></i> Регистрация
+                </a>
+                <a href="/login" class="button login-btn">
+                    <i class="fas fa-sign-in-alt"></i> Вход
+                </a>
+            {% endif %}
+        </div>
+    </nav>
+
+    <section class="course-hero">
+        <h1>Курс 5: FPV-гонки: от новичка до гонщика</h1>
+        <p>Подготовка к соревнованиям</p>
+    </section>
+
+    <div class="course-container">
+        <div class="course-details">
+            <div class="course-description">
+                <h2><i class="fas fa-info-circle"></i> Описание курса</h2>
+                <p>Этот интенсивный курс разработан для тех, кто хочет участвовать в FPV-гонках или просто хочет научиться летать на пределе возможностей. За 7 занятий вы освоите все ключевые техники, используемые профессиональными гонщиками, и подготовитесь к своим первым соревнованиям.</p>
+                
+                <p>Курс начинается с основ гоночного пилотирования: правильная посадка в поворотах, оптимальные траектории, техники прохождения ворот. Затем вы перейдете к более сложным элементам: близкому пролету возле препятствий, резким сменам направления на высокой скорости, обгонам и защитным маневрам.</p>
+                
+                <p>Особое внимание уделяется настройке дрона для гонок: выбор пропеллеров, настройка PID и фильтров для максимальной отзывчивости, оптимизация веса и распределения массы. Вы научитесь быстро диагностировать и устранять проблемы с дроном между заездами.</p>
+                
+                <p>Курс завершается мини-соревнованиями на нашей трассе с разбором всех заездов и рекомендациями по дальнейшему совершенствованию.</p>
+            </div>
+            
+            <div class="course-sidebar">
+                <div class="course-info-card">
+                    <h3><i class="fas fa-info-circle"></i> Информация</h3>
+                    <p><strong>Длительность:</strong> 7 занятий по 2 часа</p>
+                    <p><strong>Стоимость:</strong> 14 000 руб.</p>
+                    <p><strong>Уровень:</strong> Средний/Продвинутый</p>
+                    <p><strong>Требования:</strong> Базовые навыки FPV</p>
+                </div>
+                
+                <div class="course-info-card">
+                    <h3><i class="fas fa-trophy"></i> Что вас ждет</h3>
+                    <p>• Гоночные техники</p>
+                    <p>• Настройка дрона</p>
+                    <p>• Тактики гонок</p>
+                    <p>• Мини-соревнования</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="course-program">
+            <h2><i class="fas fa-list-ol"></i> Программа курса</h2>
+            
+            <div class="program-item">
+                <h3><i class="fas fa-flag"></i> Занятие 1: Основы гоночного пилотирования</h3>
+                <p>Правильная посадка в поворотах. Оптимальные траектории. Техники прохождения ворот.</p>
+            </div>
+            
+            <div class="program-item">
+                <h3><i class="fas fa-bolt"></i> Занятие 2: Управление на высокой скорости</h3>
+                <p>Контроль дрона на скоростях 100+ км/ч. Торможение. Резкие смены направления.</p>
+            </div>
+            
+            <div class="program-item">
+                <h3><i class="fas fa-gate"></i> Занятие 3: Прохождение сложных ворот</h3>
+                <p>Техники прохождения S-ворот, спиралей, узких проемов. Близкие пролеты.</p>
+            </div>
+            
+            <div class="program-item">
+                <h3><i class="fas fa-sliders-h"></i> Занятие 4: Настройка дрона для гонок</h3>
+                <p>Выбор пропеллеров. Настройка PID и фильтров. Оптимизация веса и баланса.</p>
+            </div>
+            
+            <div class="program-item">
+                <h3><i class="fas fa-users"></i> Занятие 5: Тактики гонок</h3>
+                <p>Обгоны. Защитные маневры. Экономия батареи. Психология соревнований.</p>
+            </div>
+            
+            <div class="program-item">
+                <h3><i class="fas fa-wrench"></i> Занятие 6: Быстрый ремонт</h3>
+                <p>Диагностика проблем между заездами. Быстрая замена компонентов.</p>
+            </div>
+            
+            <div class="program-item">
+                <h3><i class="fas fa-flag-checkered"></i> Занятие 7: Мини-соревнования</h3>
+                <p>Применение всех навыков на практике. Разбор заездов. Награждение.</p>
+            </div>
+        </div>
+        
+        <div class="cta-section">
+            <h2>Готовы к своим первым гонкам?</h2>
+            <p>Запишитесь на курс и станьте настоящим FPV-гонщиком!</p>
+            <a href="/register" class="cta-button">Записаться на курс</a>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>О компании</h3>
+                <p>Dronus Inc – лидер в обучении пилотированию FPV-дронов с 2020 года.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Контакты</h3>
+                <p><i class="fas fa-envelope"></i> ketov.gral03@yandex.ru</p>
+                <p><i class="fas fa-phone"></i> +7 (XXX) XXX-XX-XX</p>
+            </div>
+            <div class="footer-section">
+                <h3>Социальные сети</h3>
+                <div class="social-icons">
+                    <a href="/vk"><i class="fab fa-vk"></i></a>
+                    <a href="/tg"><i class="fab fa-telegram"></i></a>
+                    <a href="/yt"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Dronus Inc. Все права защищены.</p>
+        </div>
+    </footer>
+</body>
+</html>

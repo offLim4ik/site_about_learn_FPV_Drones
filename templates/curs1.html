@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{{ url_for('static', filename='dron_logo.ico') }}" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Основы FPV | Dronus Inc</title>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo-container">
+            <img src="{{ url_for('static', filename='dron_logo.ico') }}" alt="Логотип компании" onclick="window.location.href='/'">
+        </div>
+        <div class="nav-links">
+            <a href="/">Главная</a>
+            <a href="/main">Курсы</a>
+            <a href="/about">О нас</a>
+            <a href="/contacts">Контакты</a>
+        </div>
+        <div class="auth-buttons">
+            {% if 'user_id' in session %}
+                <div class="user-indicator">
+                    <div class="user-avatar" title="Ваш аккаунт">{{ session['username'][0]|upper }}</div>
+                    <span class="user-name">{{ session['username'] }}</span>
+                    <button class="logout-btn" onclick="window.location.href='{{ url_for('logout') }}'">
+                        <i class="fas fa-sign-out-alt"></i> Выйти
+                    </button>
+                </div>
+            {% else %}
+                <a href="/register" class="button register-btn">
+                    <i class="fas fa-user-plus"></i> Регистрация
+                </a>
+                <a href="/login" class="button login-btn">
+                    <i class="fas fa-sign-in-alt"></i> Вход
+                </a>
+            {% endif %}
+        </div>
+    </nav>
+
+    <section class="course-hero">
+        <h1>Курс 1: Основы FPV-пилотирования</h1>
+        <p>Начните свое путешествие в мир FPV с нашим базовым курсом</p>
+    </section>
+
+    <div class="course-container">
+        <div class="course-details">
+            <div class="course-description">
+                <h2><i class="fas fa-info-circle"></i> Описание курса</h2>
+                <p>Наш курс "Основы FPV-пилотирования" - это идеальный старт для тех, кто хочет освоить управление FPV-дронами с нуля. За 8 практических занятий вы пройдете путь от полного новичка до уверенного пилота, способного выполнять базовые маневры и ориентироваться в пространстве через FPV-очки.</p>
+                
+                <p>Курс разработан профессиональными пилотами с многолетним опытом и включает в себя как теоретические основы, так и множество практических упражнений. Вы узнаете о принципах работы дронов, особенностях FPV-оборудования, основах радиоуправления и безопасности полетов.</p>
+                
+                <p>Особое внимание мы уделяем практическим навыкам: вы научитесь взлетать и приземляться, удерживать дрон в воздухе, выполнять плавные повороты и перемещения, ориентироваться в пространстве через камеру дрона. Все занятия проходят на современных, надежных дронах с полной страховкой оборудования.</p>
+                
+                <p>К концу курса вы сможете уверенно управлять дроном в FPV-режиме, понимать основы настройки оборудования и будете готовы к переходу на более продвинутые техники пилотирования. Курс завершается финальным зачетом и вручением сертификата об успешном прохождении.</p>
+            </div>
+            
+            <div class="course-sidebar">
+                <div class="course-info-card">
+                    <h3><i class="fas fa-info-circle"></i> Информация</h3>
+                    <p><strong>Длительность:</strong> 8 занятий по 2 часа</p>
+                    <p><strong>Стоимость:</strong> 12 000 руб.</p>
+                    <p><strong>Уровень:</strong> Начинающий</p>
+                    <p><strong>Оборудование:</strong> Предоставляется</p>
+                </div>
+                
+                <div class="course-info-card">
+                    <h3><i class="fas fa-calendar-alt"></i> Расписание</h3>
+                    <p><strong>Начало:</strong> Каждый понедельник</p>
+                    <p><strong>Время:</strong> 18:00 - 20:00</p>
+                    <p><strong>Место:</strong> Наш тренировочный полигон</p>
+                </div>
+                
+                <div class="course-info-card">
+                    <h3><i class="fas fa-user-graduate"></i> Для кого</h3>
+                    <p>• Полные новички</p>
+                    <p>• Любители дронов</p>
+                    <p>• Будущие гонщики</p>
+                    <p>• Аэрофотографы</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="course-program">
+            <h2><i class="fas fa-list-ol"></i> Программа курса</h2>
+            
+            <div class="program-item">
+                <h3><i class="fas fa-play"></i> Занятие 1: Введение в FPV</h3>
+                <p>Теория: Основные компоненты дрона, принципы полета, безопасность. Практика: Ознакомление с оборудованием, первые попытки управления на симуляторе.</p>
+            </div>
+            
+            <div class="program-item">
+                <h3><i class="fas fa-gamepad"></i> Занятие 2: Основы управления</h3>
+                <p>Теория: Работа с пультом управления, калибровка. Практика: Взлет/посадка, удержание высоты, базовые перемещения.</p>
+            </div>
+            
+            <div class="program-item">
+                <h3><i class="fas fa-vr-cardboard"></i> Занятие 3: Первый FPV-полет</h3>
+                <p>Теория: Особенности FPV-пилотирования, ориентация в пространстве. Практика: Простые траектории в FPV-режиме.</p>
+            </div>
+            
+            <div class="program-item">
+                <h3><i class="fas fa-arrows-alt"></i> Занятие 4: Маневрирование</h3>
+                <p>Теория: Основы аэродинамики дрона. Практика: Плавные повороты, восьмерки, змейка.</p>
+            </div>
+            
+            <div class="program-item">
+                <h3><i class="fas fa-sliders-h"></i> Занятие 5: Настройки оборудования</h3>
+                <p>Теория: Betaflight, настройка контроллера, камеры. Практика: Подбор оптимальных настроек под свой стиль.</p>
+            </div>
+            
+            <div class="program-item">
+                <h3><i class="fas fa-chart-line"></i> Занятие 6: Тренировочные трассы</h3>
+                <p>Практика: Прохождение простых трасс с воротами, отработка точности управления.</p>
+            </div>
+            
+            <div class="program-item">
+                <h3><i class="fas fa-exclamation-triangle"></i> Занятие 7: Аварийные ситуации</h3>
+                <p>Теория: Причины и предотвращение аварий. Практика: Действия при потере сигнала, ориентации.</p>
+            </div>
+            
+            <div class="program-item">
+                <h3><i class="fas fa-trophy"></i> Занятие 8: Финальный зачет</h3>
+                <p>Практика: Демонстрация полученных навыков. Вручение сертификатов.</p>
+            </div>
+        </div>
+        
+        <div class="cta-section">
+            <h2>Готовы начать свое FPV-приключение?</h2>
+            <p>Запишитесь на курс прямо сейчас и получите скидку 10% на первый месяц обучения!</p>
+            <a href="/register" class="cta-button">Записаться на курс</a>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>О компании</h3>
+                <p>Dronus Inc – лидер в обучении пилотированию FPV-дронов с 2020 года.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Контакты</h3>
+                <p><i class="fas fa-envelope"></i> ketov.gral03@yandex.ru</p>
+                <p><i class="fas fa-phone"></i> +7 (XXX) XXX-XX-XX</p>
+            </div>
+            <div class="footer-section">
+                <h3>Социальные сети</h3>
+                <div class="social-icons">
+                    <a href="/vk"><i class="fab fa-vk"></i></a>
+                    <a href="/tg"><i class="fab fa-telegram"></i></a>
+                    <a href="/yt"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Dronus Inc. Все права защищены.</p>
+        </div>
+    </footer>
+</body>
+</html>

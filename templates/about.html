@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{{ url_for('static', filename='dron_logo.ico') }}" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>О нас | Dronus Inc</title>
+    
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo-container">
+            <img src="{{ url_for('static', filename='dron_logo.ico') }}" alt="Логотип компании" onclick="window.location.href='/'">
+        </div>
+        <div class="nav-links">
+            <a href="/">Главная</a>
+            <a href="/main">Курсы</a>
+            <a href="/about" class="active">О нас</a>
+            <a href="/contacts">Контакты</a>
+        </div>
+        <div class="auth-buttons">
+            {% if 'user_id' in session %}
+                <div class="user-indicator">
+                    <div class="user-avatar" title="Ваш аккаунт">{{ session['username'][0]|upper }}</div>
+                    <span class="user-name">{{ session['username'] }}</span>
+                    <button class="logout-btn" onclick="window.location.href='{{ url_for('logout') }}'">
+                        <i class="fas fa-sign-out-alt"></i> Выйти
+                    </button>
+                </div>
+            {% else %}
+                <a href="/register" class="button register-btn">
+                    <i class="fas fa-user-plus"></i> Регистрация
+                </a>
+                <a href="/login" class="button login-btn">
+                    <i class="fas fa-sign-in-alt"></i> Вход
+                </a>
+            {% endif %}
+        </div>
+    </nav>
+
+    <main class="about-main">
+        <section class="about-hero">
+            <h1>О нас</h1>
+            <p>Добро пожаловать в Dronus Inc – вашего надежного партнера в мире FPV-дронов! Мы стремимся сделать обучение пилотированию доступным и увлекательным для всех энтузиастов.</p>
+        </section>
+
+        <section class="about-stats">
+            <div class="about-card">
+                <h2><i class="fas fa-chart-line"></i> Наши достижения</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">2000+</div>
+                        <div class="stat-label">Обученных пилотов</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">50+</div>
+                        <div class="stat-label">Проведенных мероприятий</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Довольных клиентов</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="about-story">
+            <div class="about-card">
+                <h2><i class="fas fa-history"></i> Наша история</h2>
+                <p>Мы начали свою деятельность в 2020 году с целью сделать обучение пилотированию FPV-дронов доступным и увлекательным. За эти годы мы помогли тысячам энтузиастов освоить навыки пилотирования.</p>
+            </div>
+        </section>
+
+        <section class="about-mission">
+            <div class="about-card">
+                <h2><i class="fas fa-bullseye"></i> Наша миссия</h2>
+                <p>Наша миссия – вдохновлять и обучать людей, предоставляя им качественные курсы и поддержку, необходимые для успешного пилотирования FPV-дронов.</p>
+            </div>
+        </section>
+
+        <section class="about-testimonials">
+            <div class="about-card">
+                <h2><i class="fas fa-quote-left"></i> Отзывы наших учеников</h2>
+                <div class="testimonials-slider">
+                    <div class="testimonial">
+                        <p>Лучшие курсы по FPV! После обучения участвовал в соревнованиях и занял 3 место! Преподаватели - настоящие профессионалы с огромным опытом.</p>
+                        <div class="author">- Иван Петров, выпускник 2023</div>
+                    </div>
+                    <div class="testimonial">
+                        <p>Научился собирать дрон с нуля и уверенно пилотировать. Отдельное спасибо за помощь в выборе оборудования и тонкой настройке.</p>
+                        <div class="author">- Алексей Смирнов, выпускник 2024</div>
+                    </div>
+                    <div class="testimonial">
+                        <p>Прекрасная атмосфера и индивидуальный подход к каждому ученику. После курсов смогла начать карьеру аэрофотографа!</p>
+                        <div class="author">- Анна Ковалева, выпускница 2023</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="about-team">
+            <div class="about-card">
+                <h2><i class="fas fa-users"></i> Наша команда</h2>
+                <p>Наша команда состоит из опытных пилотов и преподавателей, которые готовы поделиться своими знаниями и навыками.</p>
+            </div>
+        </section>
+
+        <section class="about-values">
+            <div class="about-card">
+                <h2><i class="fas fa-star"></i> Наши ценности</h2>
+                <p>Мы ценим качество, инновации и безопасность. Каждый наш курс проходит тщательную проверку, чтобы гарантировать высокий уровень обучения.</p>
+            </div>
+        </section>
+
+        <section class="about-faq">
+            <div class="about-card">
+                <h2><i class="fas fa-question-circle"></i> Частые вопросы</h2>
+                <div class="faq-item">
+                    <h3><i class="fas fa-user-graduate"></i> С какого возраста можно обучаться?</h3>
+                    <p>Мы принимаем учеников от 14 лет. Для несовершеннолетних требуется письменное согласие родителей. Для детей младше 14 лет возможны индивидуальные занятия с родителем.</p>
+                </div>
+                <div class="faq-item">
+                    <h3><i class="fas fa-drone-alt"></i> Нужно ли свое оборудование?</h3>
+                    <p>Нет, все необходимое оборудование мы предоставляем на время обучения. Однако если у вас есть свой дрон, наши инструкторы помогут вам его настроить.</p>
+                </div>
+                <div class="faq-item">
+                    <h3><i class="fas fa-certificate"></i> Выдаете ли вы сертификаты?</h3>
+                    <p>Да, после успешного прохождения любого курса вы получаете именной сертификат, подтверждающий ваши навыки.</p>
+                </div>
+                <div class="faq-item">
+                    <h3><i class="fas fa-calendar-check"></i> Как часто проходят занятия?</h3>
+                    <p>Занятия проходят 2-3 раза в неделю в удобное вечернее время. Также возможен индивидуальный график по договоренности.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="about-community">
+            <div class="about-card">
+                <h2><i class="fas fa-globe"></i> Наше сообщество</h2>
+                <p>Мы гордимся нашим сообществом, которое объединяет людей, увлеченных FPV-дронами. Мы регулярно проводим мероприятия и встречи.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>О компании</h3>
+                <p>Dronus Inc – лидер в обучении пилотированию FPV-дронов с 2020 года.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Контакты</h3>
+                <p><i class="fas fa-envelope"></i> ketov.gral03@yandex.ru</p>
+                <p><i class="fas fa-phone"></i> +7 (XXX) XXX-XX-XX</p>
+            </div>
+            <div class="footer-section">
+                <h3>Социальные сети</h3>
+                <div class="social-icons">
+                    <a href="/vk"><i class="fab fa-vk"></i></a>
+                    <a href="/tg"><i class="fab fa-telegram"></i></a>
+                    <a href="/yt"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Dronus Inc. Все права защищены.</p>
+        </div>
+    </footer>
+</body>
+</html>
